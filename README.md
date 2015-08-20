@@ -44,3 +44,4 @@ Have a mariadb container running.
 
 ### restore
  ```docker exec *backup-container* restore YYYYmmdd```
+ ```docker-compose restart```
