@@ -1,4 +1,4 @@
-# Wordpress Docker image fork from official?
+# Wordpress Docker image fork from official.
 ## Why another fork ?
 
 * To include GD with Freetype support in order to use Wordpress plugin Really Simple CAPTCHA with Contact Form 7.
@@ -18,7 +18,7 @@ After that 2 possibilities:
 
 I choose the second solution :)
 
-## Prerequisites
+## Pre-requisite
 Have a mariadb container running.
 
 ## Run the container
@@ -28,12 +28,13 @@ Have a mariadb container running.
  Add ```-v *your_path*:/var/www/html``` to ```docker run``` command.
 
 ### SSL certificate
- Comming soon ....
+ Coming soon ....
 
 ## Use docker-compose
  Modify docker-compose.yml (https://github.com/daonerz/wordpress) to suit your needs.
 
  To start, launch the following command in the directory where docker-compose.yml is present:
+
  ```docker-compose up -d```
 
  It include a container to backup your wordpress.
