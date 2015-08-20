@@ -1,0 +1,38 @@
+your_site-backup:
+  image: aveltens/wordpress-backup
+  container_name: your_site-backup
+  volumes:
+   - your_path/backup:/backups
+  volumes_from:
+   - your_site-wordpress
+  links:
+   - your_site-mariadb:mysql
+  environment:
+   - MYSQL_ENV_MYSQL_USER=root
+   - MYSQL_ENV_MYSQL_DATABASE=wordpress
+   - MYSQL_ENV_MYSQL_PASSWORD=your_password
+
+your_site-wordpress:
+  image: daone/wordpress
+  container_name: your_site-wordpress
+  links:
+    - your_site-mariadb:mysql
+  ports:
+    - 80:80
+    - 443:443
+
+your_site-mariadb:
+  image: mariadb
+  container_name: your_site-mariadb
+  volumes_from:
+   - your_site-mariadb-data
+  environment:
+    MYSQL_ROOT_PASSWORD: your_password 
+
+your_site-mariadb-data:
+  image: ubuntu:15.04
+  container_name: your_site-mariadb-data
+  volumes:
+   - /var/lib/mysql
+  entrypoint: /bin/echo
+  command: mysql
